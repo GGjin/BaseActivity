@@ -1,5 +1,7 @@
 package com.gg.android718.fragment;
 
+import android.os.Bundle;
+
 import com.gg.android718.base.BaseFragment;
 
 /**
@@ -10,6 +12,14 @@ public class HotFragment extends BaseFragment<HotFragment, HotFragmentPresenter>
     private HotFragmentModel mModel;
     private HotFragmentPresenter mPresenter;
 
+    public static HotFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        HotFragment fragment = new HotFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void init() {
         mModel = new HotFragmentModel();

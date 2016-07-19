@@ -1,11 +1,17 @@
 package com.gg.android718.main;
 
 
-import com.gg.android718.R;
-import com.gg.android718.base.BaseActivity;
+import android.widget.TextView;
 
-public class MainActivity extends BaseActivity<MainActivity, MainActivityPresenter>
+import com.gg.android718.R;
+import com.gg.android718.base.MVPBaseActivity;
+
+import butterknife.BindView;
+
+public class MainActivity extends MVPBaseActivity<MainActivity, MainActivityPresenter>
         implements MainActivityContract.View {
+    @BindView(R.id.text)
+    TextView text;
     private MainActivityPresenter mPresenter;
     private MainActivityModel mModel;
 
@@ -13,6 +19,7 @@ public class MainActivity extends BaseActivity<MainActivity, MainActivityPresent
     public void init() {
         mModel = new MainActivityModel();
         mPresenter = new MainActivityPresenter(this, mModel);
+        text.setText("呵呵");
     }
 
     @Override
@@ -20,10 +27,6 @@ public class MainActivity extends BaseActivity<MainActivity, MainActivityPresent
         return R.layout.activity_main;
     }
 
-    @Override
-    public MainActivityPresenter getPresenter() {
-        return mPresenter;
-    }
 
     @Override
     public void onSucces() {
@@ -33,5 +36,11 @@ public class MainActivity extends BaseActivity<MainActivity, MainActivityPresent
     @Override
     public void onFail() {
 
+    }
+
+
+    @Override
+    public MainActivityPresenter getPresenter() {
+        return mPresenter;
     }
 }
